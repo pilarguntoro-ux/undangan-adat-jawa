@@ -152,7 +152,7 @@ body.locked{overflow:hidden;}
 #cover .backdrop .kawung{opacity:.16;}
 
 /* dua daun pintu */
-.door{position:absolute;top:0;bottom:0;width:50.15%;transform-style:preserve-3d;transition:transform 1.7s cubic-bezier(.72,0,.26,1);will-change:transform;}
+.door{position:absolute;top:0;bottom:0;width:50.15%;transform-style:preserve-3d;transition:transform 2.6s cubic-bezier(.6,0,.18,1);will-change:transform;}
 .door.l{left:0;transform-origin:left center;}
 .door.r{right:0;transform-origin:right center;}
 #cover.open .door.l{transform:rotateY(-112deg);}
@@ -198,8 +198,8 @@ body.locked{overflow:hidden;}
 /* ===== HERO ===== */
 .hero{text-align:center;padding:56px var(--pad) 34px;position:relative;overflow:hidden;}
 .hero .surya{width:440px;height:440px;top:-110px;left:50%;animation:spinx 140s linear infinite;}
-#ring3d{position:relative;width:min(84vw,320px);height:min(84vw,320px);margin:-8px auto -30px;z-index:1;pointer-events:none;}
-#ring3d canvas{width:100%;height:100%;display:block;}
+#kembar3d{position:relative;width:min(84vw,320px);height:min(84vw,320px);margin:-8px auto -30px;z-index:1;pointer-events:none;}
+#kembar3d canvas{width:100%;height:100%;display:block;}
 .hero .names{font-family:'Pinyon Script',cursive;font-size:clamp(52px,15vw,70px);line-height:1.05;color:var(--paper);margin:16px 0 4px;position:relative;z-index:1;}
 .hero .names .amp{color:var(--gold);font-size:.62em;}
 .hero-dateline{font-family:'Marcellus',serif;font-size:12px;letter-spacing:.34em;color:var(--gold-2);text-transform:uppercase;margin-top:10px;}
@@ -450,8 +450,8 @@ footer .credit{margin-top:24px;font-size:9.5px;letter-spacing:.34em;text-transfo
     <h1 class="names" data-reveal="flip"><span class="shimmer">Cindy</span> <span class="amp">&amp;</span> <span class="shimmer">Adit</span></h1>
     <div class="jawa-tag" data-reveal="up">· Kekalih ingkang binagya ·</div>
 
-    <!-- cincin kawin 3D (WebGL) -->
-    <div id="ring3d"><canvas id="ring3d-canvas"></canvas></div>
+    <!-- kembar mayang 3D (WebGL) -->
+    <div id="kembar3d"><canvas id="kembar3d-canvas"></canvas></div>
 
     <div class="hero-dateline" data-reveal="up">28 . 11 . 2026</div>
 
@@ -681,7 +681,7 @@ function unlock(){
   c.classList.add('open');
   document.body.classList.remove('locked');
   vinyl.style.display='flex';
-  setTimeout(()=>c.classList.add('gone'),1200);
+  setTimeout(()=>c.classList.add('gone'),1700);
   song.play().then(()=>{playing=true;vinyl.classList.add('play');}).catch(()=>{});
 }
 function togglePlay(){if(playing){song.pause();vinyl.classList.remove('play');playing=false;}else{song.play();vinyl.classList.add('play');playing=true;}}
@@ -714,77 +714,98 @@ setInterval(()=>{
   }tick();
 })();
 
-/* ===== CINCIN KAWIN 3D (WebGL / Three.js) ===== */
+/* ===== KEMBAR MAYANG 3D (WebGL / Three.js) — kembang emas + sulur janur + melati ===== */
 (function(){
-  const holder=document.getElementById('ring3d');
-  const canvas=document.getElementById('ring3d-canvas');
+  const holder=document.getElementById('kembar3d');
+  const canvas=document.getElementById('kembar3d-canvas');
   if(!holder||!canvas||!window.THREE) return;
   let renderer;
   try{
     if(!window.WebGLRenderingContext) throw new Error('no webgl');
     const cv=document.createElement('canvas');
-    cv.getContext('webgl')||cv.getContext('experimental-webgl');
-    if(!cv.getContext('webgl')&&!cv.getContext('experimental-webgl')) throw new Error('no ctx');
+    if(!(cv.getContext('webgl')||cv.getContext('experimental-webgl'))) throw new Error('no ctx');
   }catch(e){ holder.style.display='none'; return; }
 
   try{
     renderer=new THREE.WebGLRenderer({canvas:canvas,alpha:true,antialias:true});
     renderer.setPixelRatio(Math.min(window.devicePixelRatio||1,2));
     const scene=new THREE.Scene();
-    const camera=new THREE.PerspectiveCamera(45,1,0.1,60);
-    camera.position.set(0,0,7.6);
+    const camera=new THREE.PerspectiveCamera(45,1,0.1,70);
+    camera.position.set(0,0,8);
 
     const group=new THREE.Group();scene.add(group);
 
-    /* dua cincin kawin emas saling berkait */
-    const gold=new THREE.MeshStandardMaterial({color:0xe3bd57,metalness:0.95,roughness:0.18,emissive:0x241600,emissiveIntensity:0.45});
-    const gold2=new THREE.MeshStandardMaterial({color:0xc9a227,metalness:0.9,roughness:0.26,emissive:0x1f1200,emissiveIntensity:0.4});
-    const ringA=new THREE.Mesh(new THREE.TorusGeometry(1.55,0.2,28,96),gold);
-    const ringB=new THREE.Mesh(new THREE.TorusGeometry(1.55,0.2,28,96),gold2);
-    ringB.rotation.y=Math.PI/2;   /* tegak lurus → kait menyilang */
-    group.add(ringA,ringB);
+    const gold=new THREE.MeshStandardMaterial({color:0xe3bd57,metalness:0.95,roughness:0.18,emissive:0x241600,emissiveIntensity:0.5});
+    const goldDeep=new THREE.MeshStandardMaterial({color:0xc9a227,metalness:0.9,roughness:0.26,emissive:0x1f1200,emissiveIntensity:0.4});
+    const white=new THREE.MeshStandardMaterial({color:0xfdfaf1,metalness:0.08,roughness:0.45,emissive:0x151007,emissiveIntensity:0.2});
 
-    /* berlian di pucuk atas */
-    const dia=new THREE.Mesh(
-      new THREE.OctahedronGeometry(0.3,0),
-      new THREE.MeshStandardMaterial({color:0xffffff,metalness:0.12,roughness:0.04,emissive:0xfff3d8,emissiveIntensity:0.85})
-    );
-    dia.position.set(0,1.85,0);group.add(dia);
+    /* kembang ceplok emas (pusat), 2 lapis petal */
+    const flower=new THREE.Group();
+    flower.add(new THREE.Mesh(new THREE.SphereGeometry(0.28,20,20),goldDeep));
+    const petalGeom=new THREE.SphereGeometry(0.22,14,12);
+    for(let l=0;l<2;l++){
+      const R=l?0.52:0.38, n=l?10:8, z=l?0.04:0.1;
+      for(let i=0;i<n;i++){
+        const a=(i/n)*Math.PI*2 + (l? Math.PI/n:0);
+        const p=new THREE.Mesh(petalGeom,gold);
+        p.scale.set(0.52,1,0.24);
+        p.position.set(Math.cos(a)*R, Math.sin(a)*R, z);
+        p.rotation.z=a-Math.PI/2;
+        flower.add(p);
+      }
+    }
+    flower.rotation.x=-0.32;
+    group.add(flower);
 
-    /* hati emas melayang */
-    const hs=new THREE.Shape();
-    hs.moveTo(1.25,0.667);
-    hs.bezierCurveTo(1.25,0.617,1.167,0.417,0.833,0.417);
-    hs.bezierCurveTo(0.333,0.417,0.333,1.042,0.333,1.042);
-    hs.bezierCurveTo(0.333,1.333,0.667,1.7,1.25,2.0);
-    hs.bezierCurveTo(1.833,1.7,2.167,1.333,2.167,1.042);
-    hs.bezierCurveTo(2.167,1.042,2.167,0.417,1.667,0.417);
-    hs.bezierCurveTo(1.417,0.417,1.25,0.617,1.25,0.667);
-    const hgeo=new THREE.ExtrudeGeometry(hs,{depth:0.16,bevelEnabled:true,bevelThickness:0.04,bevelSize:0.04,bevelSegments:2,curveSegments:24});
-    hgeo.center();
-    const hearts=[];
-    for(let i=0;i<6;i++){
-      const h=new THREE.Mesh(hgeo,gold);
-      const ang=(i/6)*Math.PI*2;
-      const rr=2.6+Math.random()*1.0;
-      const baseY=(Math.sin(ang)*rr*0.55)+(Math.random()*0.4-0.2);
-      h.position.set(Math.cos(ang)*rr,baseY,0.5-Math.random()*1.4);
-      h.scale.setScalar(0.2+Math.random()*0.14);
-      h.userData={ph:Math.random()*Math.PI*2,sp:0.4+Math.random()*0.6,baseY:baseY,dr:(Math.random()-0.5)*0.006};
-      group.add(h);hearts.push(h);
+    /* sulur janur — spiral ikal ke atas */
+    function janurCurve(rad,height,turns,ph){
+      const pts=[];
+      for(let i=0;i<=90;i++){
+        const t=i/90;
+        const ang=ph+turns*Math.PI*2*t;
+        const r=rad*(1-t*0.82);
+        pts.push(new THREE.Vector3(Math.cos(ang)*r, -0.7+height*t, Math.sin(ang)*r));
+      }
+      return new THREE.CatmullRomCurve3(pts);
+    }
+    const janurs=[];
+    for(let k=0;k<5;k++){
+      const tube=new THREE.Mesh(
+        new THREE.TubeGeometry(janurCurve(1.25+(k%2)*0.18, 3.4+(k%3)*0.3, 0.78+(k%2)*0.18, (k/5)*Math.PI*2), 90, 0.05, 10, false),
+        (k%2)?gold:goldDeep
+      );
+      tube.rotation.y=(k/5)*Math.PI*2;
+      tube.userData={ph:k*1.3};
+      group.add(tube);janurs.push(tube);
     }
 
-    /* kilau partikel emas */
-    const N=110,pos=new Float32Array(N*3);
-    for(let i=0;i<N;i++){pos[i*3]=(Math.random()-0.5)*12;pos[i*3+1]=(Math.random()-0.5)*10;pos[i*3+2]=(Math.random()-0.5)*5;}
+    /* melati melayang */
+    const jpc=new THREE.SphereGeometry(0.06,8,8), jcc=new THREE.SphereGeometry(0.034,8,8);
+    function jasmine(){const f=new THREE.Group();f.add(new THREE.Mesh(jcc,goldDeep));
+      for(let i=0;i<5;i++){const a=(i/5)*Math.PI*2;const p=new THREE.Mesh(jpc,white);p.position.set(Math.cos(a)*0.095,Math.sin(a)*0.095,0);p.scale.set(0.7,1.7,0.5);p.rotation.z=a;f.add(p);}return f;}
+    const jas=[];
+    for(let i=0;i<9;i++){
+      const j=jasmine();
+      const ang=(i/9)*Math.PI*2;
+      const rr=2.2+Math.random()*1.3;
+      const baseY=(Math.sin(ang)*rr*0.4)-0.2+Math.random()*0.6;
+      j.position.set(Math.cos(ang)*rr, baseY, 0.4-Math.random()*1.6);
+      j.scale.setScalar(0.7+Math.random()*0.5);
+      j.userData={ph:Math.random()*Math.PI*2,sp:0.4+Math.random()*0.5,baseY:baseY};
+      group.add(j);jas.push(j);
+    }
+
+    /* kilau partikel */
+    const N=100,pos=new Float32Array(N*3);
+    for(let i=0;i<N;i++){pos[i*3]=(Math.random()-0.5)*13;pos[i*3+1]=(Math.random()-0.5)*11;pos[i*3+2]=(Math.random()-0.5)*5;}
     const pgeo=new THREE.BufferGeometry();pgeo.setAttribute('position',new THREE.BufferAttribute(pos,3));
-    const pmat=new THREE.PointsMaterial({color:0xf7e6b0,size:0.05,transparent:true,opacity:0.85,blending:THREE.AdditiveBlending,depthWrite:false});
+    const pmat=new THREE.PointsMaterial({color:0xf7e6b0,size:0.05,transparent:true,opacity:0.8,blending:THREE.AdditiveBlending,depthWrite:false});
     const pts=new THREE.Points(pgeo,pmat);group.add(pts);
 
-    scene.add(new THREE.AmbientLight(0x59401a,1.0));
+    scene.add(new THREE.AmbientLight(0x59401a,1.05));
     const p1=new THREE.PointLight(0xffe9b0,1.3,40);p1.position.set(3,4.5,6);scene.add(p1);
-    const p2=new THREE.PointLight(0xff9d3c,0.7,40);p2.position.set(-4.5,-2,4);scene.add(p2);
-    const p3=new THREE.PointLight(0x6a2000,0.9,40);p3.position.set(0,0,-6);scene.add(p3);
+    const p2=new THREE.PointLight(0xff9d3c,0.65,40);p2.position.set(-4.5,-2,4);scene.add(p2);
+    const p3=new THREE.PointLight(0x6a2000,0.85,40);p3.position.set(0,0,-6);scene.add(p3);
 
     let visible=false;
     function resize(){const r=holder.getBoundingClientRect();const w=Math.max(1,r.width),h=Math.max(1,r.height);renderer.setSize(w,h,false);camera.aspect=w/h;camera.updateProjectionMatrix();}
@@ -797,19 +818,19 @@ setInterval(()=>{
     (function loop(){
       requestAnimationFrame(loop);
       if(!visible||document.hidden) return;
-      tt+=0.0045;
-      group.rotation.y+=0.0024;
-      group.position.y=Math.sin(tt*0.24)*0.09;
-      group.position.z=Math.sin(tt*0.14)*0.06;
-      group.position.x+=(mx*0.4-group.position.x)*0.03;
-      dia.rotation.y+=0.008;dia.rotation.x+=0.005;
-      for(const h of hearts){
-        h.userData.ph+=0.006*h.userData.sp;
-        h.position.y=h.userData.baseY+Math.sin(h.userData.ph)*0.14;
-        h.rotation.z=Math.sin(h.userData.ph)*0.14;
-        h.rotation.y+=h.userData.dr*0.6;
+      tt+=0.004;
+      group.rotation.y+=0.0018;
+      group.position.y=Math.sin(tt*0.2)*0.1;
+      group.position.z=Math.sin(tt*0.12)*0.07;
+      group.position.x+=(mx*0.35-group.position.x)*0.03;
+      flower.rotation.z+=0.0022;
+      for(const tu of janurs){ tu.rotation.z=Math.sin(tt*0.16+tu.userData.ph)*0.035; }
+      for(const j of jas){
+        j.userData.ph+=0.005*j.userData.sp;
+        j.position.y=j.userData.baseY+Math.sin(j.userData.ph)*0.16;
+        j.rotation.y+=0.004;
       }
-      pts.rotation.y-=0.0006;pts.rotation.x=Math.sin(tt*0.18)*0.06;
+      pts.rotation.y-=0.0005;pts.rotation.x=Math.sin(tt*0.16)*0.06;
       pts.position.y+=0.0005;if(pts.position.y>1.3)pts.position.y=-1.3;
       renderer.render(scene,camera);
     })();
