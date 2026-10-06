@@ -123,12 +123,12 @@ body.locked{overflow:hidden;}
 /* ===== mandala gyroscope 3D (dua ring putar beda sumbu) ===== */
 .gyro3d{position:relative;width:min(240px,64vw);height:min(240px,64vw);margin:26px auto 0;transform-style:preserve-3d;}
 .gyro3d .ring{position:absolute;inset:0;border:1px solid rgba(201,162,39,.55);border-radius:50%;transform-style:preserve-3d;box-shadow:0 0 22px rgba(201,162,39,.28),inset 0 0 30px rgba(201,162,39,.1);}
-.gyro3d .ring.r1{animation:gyro1 16s linear infinite;}
-.gyro3d .ring.r2{animation:gyro2 11s linear infinite;}
-.gyro3d .ring.r3{animation:gyro3 9s linear infinite;}
+.gyro3d .ring.r1{animation:gyro1 26s linear infinite;}
+.gyro3d .ring.r2{animation:gyro2 18s linear infinite;}
+.gyro3d .ring.r3{animation:gyro3 15s linear infinite;}
 .gyro3d .ring::before{content:'';position:absolute;top:-5px;left:50%;width:9px;height:9px;margin-left:-4.5px;border-radius:50%;background:var(--gold-2);box-shadow:0 0 12px var(--gold);}
 .gyro3d .core{position:absolute;inset:34%;border-radius:50%;transform-style:preserve-3d;}
-.gyro3d .core svg{width:100%;height:100%;color:var(--gold);filter:drop-shadow(0 0 12px rgba(201,162,39,.55));animation:coinspin 7s linear infinite;}
+.gyro3d .core svg{width:100%;height:100%;color:var(--gold);filter:drop-shadow(0 0 12px rgba(201,162,39,.55));animation:coinspin 12s linear infinite;}
 @keyframes gyro1{from{transform:rotateX(68deg) rotateZ(0);}to{transform:rotateX(68deg) rotateZ(360deg);}}
 @keyframes gyro2{from{transform:rotateX(22deg) rotateY(0) rotateZ(0);}to{transform:rotateX(22deg) rotateY(360deg) rotateZ(0);}}
 @keyframes gyro3{from{transform:rotateY(46deg) rotateZ(0);}to{transform:rotateY(46deg) rotateZ(-360deg);}}
@@ -794,37 +794,45 @@ setInterval(()=>{
     (function loop(){
       requestAnimationFrame(loop);
       if(!visible||document.hidden) return;
-      tt+=0.008;
-      group.rotation.y+=0.006;
-      group.position.y=Math.sin(tt*0.6)*0.14;
-      group.position.z=Math.sin(tt*0.3)*0.1;
-      group.position.x+=(mx*0.5-group.position.x)*0.05;
-      dia.rotation.y+=0.02;dia.rotation.x+=0.012;
+      tt+=0.0045;
+      group.rotation.y+=0.0024;
+      group.position.y=Math.sin(tt*0.24)*0.09;
+      group.position.z=Math.sin(tt*0.14)*0.06;
+      group.position.x+=(mx*0.4-group.position.x)*0.03;
+      dia.rotation.y+=0.008;dia.rotation.x+=0.005;
       for(const h of hearts){
-        h.userData.ph+=0.01*h.userData.sp;
-        h.position.y=h.userData.baseY+Math.sin(h.userData.ph)*0.22;
-        h.rotation.z=Math.sin(h.userData.ph)*0.25;
-        h.rotation.y+=h.userData.dr;
+        h.userData.ph+=0.006*h.userData.sp;
+        h.position.y=h.userData.baseY+Math.sin(h.userData.ph)*0.14;
+        h.rotation.z=Math.sin(h.userData.ph)*0.14;
+        h.rotation.y+=h.userData.dr*0.6;
       }
-      pts.rotation.y-=0.0012;pts.rotation.x=Math.sin(tt*0.3)*0.08;
-      pts.position.y+=0.001;if(pts.position.y>1.3)pts.position.y=-1.3;
+      pts.rotation.y-=0.0006;pts.rotation.x=Math.sin(tt*0.18)*0.06;
+      pts.position.y+=0.0005;if(pts.position.y>1.3)pts.position.y=-1.3;
       renderer.render(scene,camera);
     })();
   }catch(e){ holder.style.display='none'; }
 })();
 
-/* ===== tilt 3D (mouse halus) ===== */
+/* ===== tilt 3D (mouse halus, dengan lerp) ===== */
 if(matchMedia('(hover:hover) and (pointer:fine)').matches){
   document.querySelectorAll('.tilt3d').forEach(el=>{
-    let raf=null;
+    if(el.closest('.gallery')) return;
+    let cx=0,cy=0,tx=0,ty=0,on=false,raf=null;
+    const step=()=>{
+      cx+=(tx-cx)*0.07; cy+=(ty-cy)*0.07;
+      if(on || Math.abs(tx-cx)>0.002 || Math.abs(ty-cy)>0.002){
+        el.style.transform=`perspective(900px) rotateY(${(cx*10).toFixed(2)}deg) rotateX(${(-cy*10).toFixed(2)}deg) translateZ(14px)`;
+        raf=requestAnimationFrame(step);
+      }else{
+        el.style.transform=''; raf=null;
+      }
+    };
+    el.addEventListener('pointerenter',()=>{on=true; if(!raf) raf=requestAnimationFrame(step);});
     el.addEventListener('pointermove',e=>{
-      if(el.closest('.gallery')) return;
       const r=el.getBoundingClientRect();
-      const x=(e.clientX-r.left)/r.width-.5,y=(e.clientY-r.top)/r.height-.5;
-      if(raf)cancelAnimationFrame(raf);
-      raf=requestAnimationFrame(()=>{el.style.transform=`perspective(900px) rotateY(${(x*14).toFixed(1)}deg) rotateX(${(-y*14).toFixed(1)}deg) translateZ(20px)`;});
+      tx=(e.clientX-r.left)/r.width-.5; ty=(e.clientY-r.top)/r.height-.5;
     });
-    el.addEventListener('pointerleave',()=>{el.style.transform='';});
+    el.addEventListener('pointerleave',()=>{on=false; tx=0; ty=0;});
   });
 }
 
