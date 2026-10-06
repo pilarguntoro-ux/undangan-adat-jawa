@@ -3,19 +3,18 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
-<title>Pria &amp; Wanita — Mangayubagya</title>
+<title>Cindy &amp; Adit — The Wedding</title>
 
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Marcellus&family=Pinyon+Script&family=Jost:wght@300;400;500;600&family=Noto+Sans+Javanese:wght@400;700&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Marcellus&family=Pinyon+Script&family=Jost:wght@300;400;500;600&display=swap" rel="stylesheet">
 
 <style>
 /* =========================================================
-   MAROON ADAT JAWA — undangan pernikahan nuansa keraton
+   MAROON ADAT JAWA — Cindy & Adit
    ========================================================= */
 :root{
   --m950:#120000; --m900:#240000; --m850:#2e0000; --m800:#3d0000; --m700:#520000; --m600:#6b0000;
-  --wine:#470c0c;
   --gold:#c9a227; --gold-2:#e3bd57; --gold-3:#f2dd9d;
   --paper:#f6ecd8; --muted:rgba(246,236,216,.6);
   --pad:clamp(20px,6vw,32px);
@@ -25,13 +24,13 @@
 html{scroll-behavior:smooth;}
 body{font-family:'Jost',sans-serif;font-weight:300;background:var(--m950);color:var(--paper);overflow-x:hidden;line-height:1.75;font-size:15px;}
 
-/* batik kawung pattern (gold, samar) */
-.kawung{position:fixed;inset:0;z-index:-2;opacity:.16;pointer-events:none;
-  background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='120' height='120' viewBox='0 0 120 120'%3E%3Cg fill='none' stroke='%23c9a227' stroke-width='1.4'%3E%3Cpath d='M60 8 C74 22,74 38,60 52 C46 38,46 22,60 8 Z'/%3E%3Cpath d='M60 112 C74 98,74 82,60 68 C46 82,46 98,60 112 Z'/%3E%3Cpath d='M8 60 C22 46,38 46,52 60 C38 74,22 74,8 60 Z'/%3E%3Cpath d='M112 60 C98 46,82 46,68 60 C82 74,98 74,112 60 Z'/%3E%3C/g%3E%3C/svg%3E");}
+/* batik kawung */
+.kawung{position:fixed;inset:0;z-index:-2;opacity:.14;pointer-events:none;
+  background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='120' height='120' viewBox='0 0 120 120'%3E%3Cg fill='none' stroke='%23c9a227' stroke-width='1.5'%3E%3Cpath d='M60 8 C74 22,74 38,60 52 C46 38,46 22,60 8 Z'/%3E%3Cpath d='M60 112 C74 98,74 82,60 68 C46 82,46 98,60 112 Z'/%3E%3Cpath d='M8 60 C22 46,38 46,52 60 C38 74,22 74,8 60 Z'/%3E%3Cpath d='M112 60 C98 46,82 46,68 60 C82 74,98 74,112 60 Z'/%3E%3C/g%3E%3C/svg%3E");}
 .bg{position:fixed;inset:0;z-index:-3;overflow:hidden;
   background:radial-gradient(130% 80% at 50% -8%,var(--m600),var(--m850) 48%,var(--m950) 100%);}
 .bg .orb{position:absolute;border-radius:50%;filter:blur(70px);opacity:.45;mix-blend-mode:screen;animation:drift 20s ease-in-out infinite alternate;}
-.orb-1{width:420px;height:420px;background:#6b0000;top:-120px;left:-120px;}
+.orb-1{width:420px;height:420px;background:#6b0000;top:-120px;left:-130px;}
 .orb-2{width:340px;height:340px;background:#8a1414;top:34%;right:-140px;animation-delay:-7s;}
 .orb-3{width:300px;height:300px;background:rgba(201,162,39,.32);bottom:-80px;left:18%;animation-delay:-13s;}
 @keyframes drift{from{transform:translate(0,0) scale(1);}to{transform:translate(40px,-30px) scale(1.15);}}
@@ -43,6 +42,22 @@ body{font-family:'Jost',sans-serif;font-weight:300;background:var(--m950);color:
 
 .viewport{max-width:480px;margin:0 auto;min-height:100vh;position:relative;}
 
+/* tumpal (segitiga batik) */
+.tumpal{height:14px;background-repeat:repeat-x;background-size:26px 14px;opacity:.8;
+  background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='26' height='14' viewBox='0 0 26 14'%3E%3Cpath d='M0 14 L13 0 L26 14 Z' fill='none' stroke='%23c9a227' stroke-width='1.2'/%3E%3C/svg%3E");}
+.tumpal.flip{transform:scaleY(-1);}
+
+/* lereng lattice (garis diagonal batik) */
+.lereng{position:absolute;inset:0;opacity:.10;pointer-events:none;
+  background-image:repeating-linear-gradient(45deg,rgba(201,162,39,.9) 0 1px,transparent 1px 20px),
+                   repeating-linear-gradient(-45deg,rgba(201,162,39,.9) 0 1px,transparent 1px 20px);}
+
+/* surya (sinar matahari) */
+.surya{position:absolute;border-radius:50%;pointer-events:none;z-index:0;opacity:.5;
+  background:repeating-conic-gradient(from 0deg,rgba(201,162,39,.55) 0deg 5deg,transparent 5deg 24deg);
+  -webkit-mask:radial-gradient(circle,transparent 0 34%,#000 72%,transparent 100%);
+          mask:radial-gradient(circle,transparent 0 34%,#000 72%,transparent 100%);}
+
 /* reveal */
 [data-reveal]{opacity:0;transition:opacity 1s var(--ease),transform 1s var(--ease),filter 1s var(--ease);will-change:transform,opacity,filter;}
 [data-reveal="up"]{transform:translateY(44px);}
@@ -52,7 +67,6 @@ body{font-family:'Jost',sans-serif;font-weight:300;background:var(--m950);color:
 [data-reveal="blur"]{filter:blur(14px);transform:scale(1.04);}
 .in{opacity:1 !important;transform:none !important;filter:none !important;}
 
-/* split name */
 .split .ch{display:inline-block;opacity:0;transform:translateY(.6em) rotate(4deg);filter:blur(6px);
   transition:opacity .7s var(--ease),transform .7s var(--ease),filter .7s var(--ease);}
 .split.show .ch{opacity:1;transform:none;filter:none;}
@@ -62,16 +76,13 @@ body{font-family:'Jost',sans-serif;font-weight:300;background:var(--m950);color:
   background-size:220% 100%;-webkit-background-clip:text;background-clip:text;color:transparent;animation:shine 6s linear infinite;}
 @keyframes shine{to{background-position:-220% 0;}}
 
-.aksara{font-family:'Noto Sans Javanese',serif;letter-spacing:.08em;color:var(--gold-2);}
-
 .wrap{padding:var(--pad);}
-.orn{display:block;margin:8px auto;width:70px;height:auto;opacity:.85;}
 .eyebrow{font-family:'Marcellus',serif;font-size:11px;letter-spacing:.4em;text-transform:uppercase;color:var(--gold-2);display:inline-flex;align-items:center;gap:12px;}
 .eyebrow::before,.eyebrow::after{content:'';width:24px;height:1px;background:linear-gradient(90deg,transparent,var(--gold));}
 .eyebrow::after{background:linear-gradient(90deg,var(--gold),transparent);}
 .title{font-family:'Marcellus',serif;font-weight:400;font-size:clamp(26px,7.5vw,33px);line-height:1.2;color:var(--paper);margin:14px 0 6px;}
 .lede{color:var(--muted);font-size:13.5px;max-width:36ch;margin:0 auto;}
-.sec{padding:56px 0;position:relative;text-align:center;}
+.sec{padding:54px 0;position:relative;text-align:center;}
 
 .card{background:linear-gradient(180deg,rgba(120,0,0,.12),rgba(20,0,0,.07));
   border:1px solid rgba(201,162,39,.24);border-radius:20px;padding:26px 22px;position:relative;
@@ -83,16 +94,28 @@ body{font-family:'Jost',sans-serif;font-weight:300;background:var(--m950);color:
 .btn-ghost{color:var(--gold-2);background:transparent;border:1px solid rgba(201,162,39,.5);}
 .btn-ghost:hover{transform:translateY(-3px);background:rgba(201,162,39,.08);}
 
+/* ornament svg */
+.orn{color:var(--gold);}
+.orn.gunungan{width:64px;height:auto;}
+.orn.kembang{width:26px;height:auto;}
+.orn.sulur{width:70px;height:auto;}
+.orn-center{display:flex;justify-content:center;margin:16px 0;}
+.rotating{animation:spin 70s linear infinite;}
+@keyframes spin{to{transform:rotate(360deg);}}
+
 /* ============ COVER ============ */
-#cover{position:fixed;inset:0;z-index:9999;display:flex;align-items:center;justify-content:center;
-  background:linear-gradient(180deg,rgba(18,0,0,.55),rgba(18,0,0,.86)),url('assets/bg_gunungan_m.jpg') center/cover no-repeat;
+#cover{position:fixed;inset:0;z-index:9999;display:flex;align-items:center;justify-content:center;overflow:hidden;
+  background:radial-gradient(120% 90% at 50% 0%,var(--m800),var(--m950) 72%);
   transition:transform 1.4s var(--ease),opacity 1.2s ease;}
 #cover.opened{transform:translateY(-100%);opacity:0;}
-#cover .frame{position:absolute;inset:16px;border:1px solid rgba(201,162,39,.4);border-radius:14px;pointer-events:none;}
-#cover .frame::after{content:'';position:absolute;inset:6px;border:1px solid rgba(201,162,39,.18);border-radius:10px;}
-#cover .mandala{position:absolute;top:-80px;right:-80px;width:220px;opacity:.4;}
-.cover-inner{position:relative;z-index:2;text-align:center;padding:22px;}
-.cover-aksara{font-family:'Noto Sans Javanese',serif;font-size:22px;color:var(--gold-2);letter-spacing:.06em;}
+#cover .surya{width:520px;height:520px;top:50%;left:50%;transform:translate(-50%,-50%);animation:spin 120s linear infinite;}
+#cover .gunungan-big{position:absolute;bottom:0;left:50%;transform:translateX(-50%);width:min(72vw,320px);opacity:.5;z-index:0;}
+#cover .frame{position:absolute;inset:14px;border:1px solid rgba(201,162,39,.4);border-radius:14px;pointer-events:none;z-index:1;}
+#cover .frame::after{content:'';position:absolute;inset:6px;border:1px solid rgba(201,162,39,.16);border-radius:10px;}
+#cover .sulur-nw{position:absolute;top:0;left:0;width:110px;opacity:.5;z-index:1;}
+#cover .sulur-se{position:absolute;bottom:0;right:0;width:110px;opacity:.5;z-index:1;transform:rotate(180deg);}
+.cover-inner{position:relative;z-index:2;text-align:center;padding:24px;}
+.cover-label{font-family:'Marcellus',serif;font-size:10px;letter-spacing:.5em;color:var(--gold-2);text-transform:uppercase;}
 .cover-photo{width:108px;height:136px;margin:20px auto 16px;border-radius:54px 54px 16px 16px;overflow:hidden;
   border:2px solid var(--gold);box-shadow:0 0 38px rgba(201,162,39,.45),0 18px 38px rgba(0,0,0,.5);position:relative;}
 .cover-photo img{width:100%;height:100%;object-fit:cover;animation:kenburns 14s ease-in-out infinite alternate;}
@@ -108,32 +131,23 @@ body{font-family:'Jost',sans-serif;font-weight:300;background:var(--m950);color:
 .cover-open .btn small{font-family:'Jost',sans-serif;font-size:9px;letter-spacing:.2em;opacity:.75;text-transform:none;}
 .cover-open .btn svg{width:20px;height:20px;stroke:var(--m900);animation:bounce 2s ease-in-out infinite;}
 @keyframes bounce{0%,100%{transform:translateY(0);}50%{transform:translateY(5px);}}
-
 @keyframes kenburns{from{transform:scale(1) translate(0,0);}to{transform:scale(1.14) translate(1.5%,-2%);}}
 
 /* ============ HERO ============ */
-.hero{text-align:center;padding:66px var(--pad) 36px;position:relative;}
-.hero .aksara{display:block;font-size:26px;margin-bottom:4px;}
-.hero .names{font-family:'Pinyon Script',cursive;font-size:clamp(52px,15vw,70px);line-height:1.05;color:var(--paper);margin:16px 0 4px;}
+.hero{text-align:center;padding:60px var(--pad) 36px;position:relative;overflow:hidden;}
+.hero .surya{width:460px;height:460px;top:-120px;left:50%;transform:translateX(-50%);animation:spin 140s linear infinite;}
+.hero .names{font-family:'Pinyon Script',cursive;font-size:clamp(52px,15vw,70px);line-height:1.05;color:var(--paper);margin:16px 0 4px;position:relative;z-index:1;}
 .hero .names .amp{color:var(--gold);font-size:.62em;}
 .hero-dateline{font-family:'Marcellus',serif;font-size:12px;letter-spacing:.34em;color:var(--gold-2);text-transform:uppercase;margin-top:10px;}
-.hero .orn-flower{position:absolute;pointer-events:none;opacity:.5;filter:drop-shadow(0 4px 12px rgba(0,0,0,.4));}
-.hf-1{top:8px;left:-6px;width:110px;animation:sway 9s ease-in-out infinite alternate;}
-.hf-2{top:120px;right:-20px;width:96px;transform:scaleX(-1);animation:sway 11s ease-in-out infinite alternate-reverse;}
-.hf-3{bottom:-10px;left:-10px;width:88px;animation:sway 10s ease-in-out infinite alternate-reverse;}
+.hero .sulur-l{position:absolute;top:90px;left:-8px;width:84px;opacity:.4;animation:sway 9s ease-in-out infinite alternate;}
+.hero .sulur-r{position:absolute;top:230px;right:-10px;width:84px;opacity:.4;transform:rotate(180deg);animation:sway 11s ease-in-out infinite alternate-reverse;}
 @keyframes sway{from{transform:translateY(0) rotate(-3deg);}to{transform:translateY(12px) rotate(4deg);}}
-.bird{position:absolute;pointer-events:none;z-index:3;opacity:.55;filter:drop-shadow(0 3px 8px rgba(0,0,0,.4));}
-.bird-l{animation:flyL 30s linear infinite;}
-.bird-r{animation:flyR 36s linear infinite;}
-@keyframes flyR{0%{transform:translateX(-20%) scaleX(-1);opacity:0;}6%{opacity:.55;}50%{transform:translateX(46vw) translateY(-26px) scaleX(-1);}100%{transform:translateX(112%) translateY(-8px) scaleX(-1);opacity:0;}}
-@keyframes flyL{0%{transform:translateX(112%);opacity:0;}8%{opacity:.55;}50%{transform:translateX(50vw) translateY(-20px);}100%{transform:translateX(-20%) translateY(-4px);opacity:0;}}
 
 .quote{font-family:'Marcellus',serif;font-size:15px;line-height:2;color:var(--paper);max-width:40ch;margin:0 auto;font-style:italic;}
 .quote b{color:var(--gold-2);font-weight:400;}
-.divider{display:flex;align-items:center;justify-content:center;gap:10px;margin:22px auto;}
+.divider{display:flex;align-items:center;justify-content:center;gap:12px;margin:22px auto;}
 .divider i{width:56px;height:1px;background:linear-gradient(90deg,transparent,var(--gold-2));}
 .divider i:last-child{background:linear-gradient(90deg,var(--gold-2),transparent);}
-.divider svg{width:18px;height:18px;stroke:var(--gold);fill:none;}
 
 .bigdate{position:relative;margin-top:24px;}
 .bigdate .num{font-family:'Marcellus',serif;font-size:clamp(96px,32vw,140px);line-height:.8;color:transparent;
@@ -148,17 +162,19 @@ body{font-family:'Jost',sans-serif;font-weight:300;background:var(--m950);color:
 .count .cell b.tick{animation:tick .5s var(--ease);}
 @keyframes tick{0%{transform:scale(1.25);}100%{transform:scale(1);}}
 
-/* ============ MARQUEE ============ */
+/* marquee */
 .marquee{overflow:hidden;border-top:1px solid rgba(201,162,39,.25);border-bottom:1px solid rgba(201,162,39,.25);padding:14px 0;margin:34px 0;white-space:nowrap;position:relative;}
 .marquee .track{display:inline-flex;gap:32px;animation:marquee 28s linear infinite;will-change:transform;}
 .marquee span{font-family:'Marcellus',serif;font-size:12.5px;letter-spacing:.28em;text-transform:uppercase;color:var(--gold-2);}
 .marquee span b{color:var(--paper);font-weight:400;margin:0 6px;}
 @keyframes marquee{to{transform:translateX(-50%);}}
 
-/* ============ COUPLE (gebyok) ============ */
-.couple-band{position:relative;padding:66px 0 70px;text-align:center;
-  background:linear-gradient(180deg,rgba(18,0,0,.7),rgba(18,0,0,.82)),url('assets/gebyok_m.jpg') center/cover;border-top:1px solid rgba(201,162,39,.25);border-bottom:1px solid rgba(201,162,39,.25);}
-.couple-stack{display:flex;flex-direction:column;gap:32px;margin-top:38px;padding:0 var(--pad);}
+/* ============ COUPLE ============ */
+.couple-band{position:relative;padding:66px 0 70px;text-align:center;overflow:hidden;
+  background:radial-gradient(120% 70% at 50% 0%,rgba(80,0,0,.55),rgba(18,0,0,.86));border-top:1px solid rgba(201,162,39,.25);border-bottom:1px solid rgba(201,162,39,.25);}
+.couple-band .lereng{opacity:.08;}
+.couple-band .gunungan-bg{position:absolute;top:50%;left:50%;transform:translate(-50%,-52%);width:280px;opacity:.22;z-index:0;}
+.couple-stack{display:flex;flex-direction:column;gap:32px;margin-top:38px;padding:0 var(--pad);position:relative;z-index:1;}
 .person{position:relative;text-align:center;}
 .person .arch{position:relative;width:min(76vw,290px);margin:0 auto;border-radius:48% 48% 16px 16px;overflow:hidden;
   border:2px solid var(--gold);box-shadow:0 0 0 6px rgba(201,162,39,.12),0 26px 50px rgba(0,0,0,.55);}
@@ -173,6 +189,8 @@ body{font-family:'Jost',sans-serif;font-weight:300;background:var(--m950);color:
 .person .p-full{font-family:'Marcellus',serif;font-size:10px;letter-spacing:.28em;text-transform:uppercase;color:var(--gold-2);margin:6px 0;}
 .person .p-parents{font-size:12.5px;color:var(--muted);}
 .amp-big{font-family:'Pinyon Script',cursive;font-size:54px;color:var(--gold);text-align:center;margin:-8px 0;}
+.sawat{display:flex;align-items:center;justify-content:center;gap:14px;margin-top:26px;}
+.sawat svg{width:64px;height:auto;color:var(--gold);opacity:.7;}
 
 /* ============ ACARA ============ */
 .event-col{display:flex;flex-direction:column;gap:16px;margin-top:20px;}
@@ -184,7 +202,7 @@ body{font-family:'Jost',sans-serif;font-weight:300;background:var(--m950);color:
 .event .e-loc{font-size:13px;color:var(--muted);margin-top:8px;line-height:1.7;}
 .event .e-link{display:inline-flex;align-items:center;gap:8px;margin-top:14px;color:var(--gold-2);text-decoration:none;font-size:11.5px;letter-spacing:.16em;text-transform:uppercase;font-family:'Marcellus',serif;}
 
-/* ============ GALERI ============ */
+/* galeri */
 .gallery{display:flex;gap:14px;overflow-x:auto;scroll-snap-type:x mandatory;padding:14px 4px 22px;scrollbar-width:none;-webkit-overflow-scrolling:touch;margin-left:calc(var(--pad) * -1);padding-left:var(--pad);width:calc(100% + var(--pad));}
 .gallery::-webkit-scrollbar{display:none;}
 .slide{scroll-snap-align:center;flex:0 0 auto;width:min(72vw,270px);position:relative;border-radius:18px;overflow:hidden;border:1px solid rgba(201,162,39,.28);box-shadow:0 20px 44px rgba(0,0,0,.5);}
@@ -192,7 +210,7 @@ body{font-family:'Jost',sans-serif;font-weight:300;background:var(--m950);color:
 .slide:hover img{transform:scale(1.08);}
 .slide .cap{position:absolute;left:0;right:0;bottom:0;padding:28px 14px 12px;font-size:11px;letter-spacing:.12em;color:var(--gold-3);background:linear-gradient(180deg,transparent,rgba(20,0,0,.85));text-transform:uppercase;font-family:'Marcellus',serif;}
 
-/* ============ STORY ============ */
+/* story */
 .timeline{position:relative;text-align:left;margin:24px 6px 0;padding-left:28px;}
 .timeline::before{content:'';position:absolute;left:9px;top:6px;bottom:6px;width:1px;background:rgba(201,162,39,.25);}
 .timeline .line-fill{position:absolute;left:9px;top:6px;width:1px;height:0;background:linear-gradient(180deg,var(--gold-3),var(--gold));transform-origin:top;transition:height 2.4s var(--ease);}
@@ -204,7 +222,7 @@ body{font-family:'Jost',sans-serif;font-weight:300;background:var(--m950);color:
 .step .tt{font-family:'Marcellus',serif;font-size:18px;color:var(--paper);margin:3px 0 5px;}
 .step .ds{font-size:13px;color:var(--muted);line-height:1.75;}
 
-/* ============ KADO ============ */
+/* kado */
 .gift-grid{display:flex;flex-direction:column;gap:14px;margin-top:20px;}
 .gift{display:flex;align-items:center;gap:16px;text-align:left;padding:18px 20px;}
 .gift .logo{flex:0 0 46px;height:46px;border-radius:12px;background:linear-gradient(135deg,#fff7da,var(--gold));color:var(--m800);display:flex;align-items:center;justify-content:center;font-family:'Marcellus',serif;font-weight:bold;font-size:15px;}
@@ -215,7 +233,7 @@ body{font-family:'Jost',sans-serif;font-weight:300;background:var(--m950);color:
 .gift .copy{flex:0 0 auto;cursor:pointer;background:rgba(201,162,39,.12);border:1px solid rgba(201,162,39,.35);border-radius:10px;color:var(--gold-2);padding:9px 12px;font-size:11px;letter-spacing:.14em;text-transform:uppercase;font-family:'Marcellus',serif;transition:background .3s,transform .3s;}
 .gift .copy:hover{background:rgba(201,162,39,.26);transform:scale(1.04);}
 
-/* ============ UCAPAN ============ */
+/* ucapan */
 .field{width:100%;padding:14px 16px;background:rgba(20,0,0,.35);border:1px solid rgba(201,162,39,.25);border-radius:14px;color:var(--paper);font-family:'Jost',sans-serif;font-weight:300;font-size:14px;margin-bottom:12px;outline:none;resize:vertical;}
 .field::placeholder{color:rgba(246,236,216,.4);}
 .field:focus{border-color:var(--gold);box-shadow:0 0 0 3px rgba(201,162,39,.12);}
@@ -224,10 +242,9 @@ body{font-family:'Jost',sans-serif;font-weight:300;background:var(--m950);color:
 .wish .a{font-family:'Marcellus',serif;font-size:14px;color:var(--gold-2);}
 .wish .b{font-size:13px;color:var(--muted);margin-top:3px;}
 
-footer{text-align:center;padding:66px var(--pad) 120px;position:relative;
-  background:linear-gradient(180deg,rgba(18,0,0,.72),rgba(18,0,0,.9)),url('assets/bg_gunungan_m.jpg') center/cover;}
-footer .aksara{display:block;font-size:24px;}
-footer .names{font-family:'Pinyon Script',cursive;font-size:44px;color:var(--paper);line-height:1.1;margin-top:10px;}
+footer{text-align:center;padding:60px var(--pad) 120px;position:relative;overflow:hidden;}
+footer .gunungan{opacity:.5;}
+footer .names{font-family:'Pinyon Script',cursive;font-size:44px;color:var(--paper);line-height:1.1;margin-top:8px;}
 footer .names .amp{color:var(--gold);font-size:.62em;}
 footer .thanks{font-size:13px;color:var(--muted);max-width:34ch;margin:14px auto 0;}
 footer .credit{margin-top:24px;font-size:9.5px;letter-spacing:.34em;text-transform:uppercase;color:rgba(201,162,39,.55);}
@@ -243,13 +260,55 @@ footer .credit{margin-top:24px;font-size:9.5px;letter-spacing:.34em;text-transfo
   background:radial-gradient(circle at 35% 30%,#fff7da,var(--gold) 55%,var(--gold-2));color:var(--m800);cursor:pointer;z-index:9997;
   box-shadow:0 6px 20px rgba(0,0,0,.5),inset 0 0 0 3px rgba(107,0,0,.5);border:2px solid var(--m800);}
 #vinyl.play{animation:spin 3.2s linear infinite;}
-@keyframes spin{to{transform:rotate(360deg);}}
 
 #toast{position:fixed;bottom:150px;left:50%;transform:translateX(-50%) translateY(20px);background:var(--m800);color:var(--gold-2);padding:11px 22px;border-radius:24px;font-size:12.5px;border:1px solid rgba(201,162,39,.4);box-shadow:0 12px 30px rgba(0,0,0,.5);opacity:0;pointer-events:none;transition:all .35s var(--ease);z-index:10001;font-family:'Marcellus',serif;letter-spacing:.08em;}
 #toast.show{transform:translateX(-50%) translateY(0);opacity:1;}
 </style>
 </head>
 <body>
+
+<!-- ===== ORNAMEN SVG (gold) ===== -->
+<svg width="0" height="0" style="position:absolute">
+  <defs>
+    <symbol id="gunungan" viewBox="0 0 120 200">
+      <g fill="none" stroke="currentColor">
+        <path d="M60 8 C80 46 92 92 88 128 C85 156 74 182 60 189 C46 182 35 156 32 128 C28 92 40 46 60 8 Z" stroke-width="2"/>
+        <path d="M60 24 C76 56 86 96 83 126 C81 152 71 176 60 182 C49 176 39 152 37 126 C34 96 44 56 60 24 Z" stroke-width="1.2"/>
+        <path d="M60 42 C72 66 80 98 78 122 C76 146 68 168 60 174 C52 168 44 146 42 122 C40 98 48 66 60 42 Z" stroke-width="1"/>
+        <circle cx="60" cy="80" r="8" stroke-width="1.4"/><circle cx="60" cy="80" r="3.4" stroke-width="1.1"/>
+        <path d="M48 74 C53 71 57 70 60 71 M72 74 C67 71 63 70 60 71" stroke-width="1.2"/>
+        <path d="M47 130 L73 130 M50 150 L70 150 M54 167 L66 167" stroke-width="1"/>
+      </g>
+    </symbol>
+    <symbol id="kembang" viewBox="0 0 100 100">
+      <g fill="none" stroke="currentColor" stroke-width="1.6">
+        <circle cx="50" cy="50" r="26"/><circle cx="50" cy="50" r="8"/><circle cx="50" cy="50" r="2.5"/>
+        <path d="M50 14 C53 22 54 29 50 34 C46 29 47 22 50 14 Z"/>
+        <path d="M75 25 C74 34 70 40 63 44 C61 37 66 29 75 25 Z"/>
+        <path d="M86 50 C80 53 73 54 66 50 C73 46 80 47 86 50 Z"/>
+        <path d="M75 75 C66 79 59 76 56 68 C63 65 71 69 75 75 Z"/>
+        <path d="M50 86 C47 78 46 71 50 66 C54 71 53 78 50 86 Z"/>
+        <path d="M25 75 C26 66 30 60 37 56 C39 63 34 71 25 75 Z"/>
+        <path d="M14 50 C20 47 27 46 34 50 C27 53 20 52 14 50 Z"/>
+        <path d="M25 25 C34 21 41 24 44 32 C37 35 29 31 25 25 Z"/>
+      </g>
+    </symbol>
+    <symbol id="sulur" viewBox="0 0 100 100">
+      <g fill="none" stroke="currentColor" stroke-width="1.6">
+        <path d="M8 94 C8 54 28 32 56 40 C74 46 84 62 82 78 C80 90 68 94 60 86 C54 80 58 68 68 66"/>
+        <path d="M16 92 C34 84 42 72 42 58"/>
+        <circle cx="78" cy="70" r="4"/>
+      </g>
+    </symbol>
+    <symbol id="sawat" viewBox="0 0 120 60">
+      <g fill="none" stroke="currentColor" stroke-width="1.6">
+        <path d="M6 30 C36 14 84 14 114 30"/>
+        <path d="M6 30 C32 36 60 40 88 40 C98 40 106 36 114 30"/>
+        <path d="M30 22 C44 26 54 28 66 28 M78 28 C88 28 98 26 108 22"/>
+      </g>
+    </symbol>
+  </defs>
+</svg>
 
 <div class="bg"><i class="orb orb-1"></i><i class="orb orb-2"></i><i class="orb orb-3"></i></div>
 <div class="kawung"></div>
@@ -259,15 +318,18 @@ footer .credit{margin-top:24px;font-size:9.5px;letter-spacing:.34em;text-transfo
 
 <!-- ===== COVER ===== -->
 <div id="cover">
+  <div class="surya"></div>
+  <svg class="gunungan-big orn" style="pointer-events:none"><use href="#gunungan"/></svg>
+  <svg class="sulur-nw orn"><use href="#sulur"/></svg>
+  <svg class="sulur-se orn"><use href="#sulur"/></svg>
   <div class="frame"></div>
-  <img src="assets/mandala_gold.png" class="mandala rotating" alt="">
   <div class="cover-inner">
-    <div class="cover-aksara">ꦩꦔꦪꦸꦧꦒꦾ</div>
-    <div class="cover-photo"><img src="assets/woman.jpg" alt=""></div>
-    <div class="cover-names"><span class="split-name" data-txt="Pria">Pria</span> <span class="amp">&amp;</span> <span class="split-name" data-txt="Wanita">Wanita</span></div>
+    <div class="cover-label">The Wedding Of</div>
+    <div class="cover-photo"><img src="assets/cindy.jpg" alt=""></div>
+    <div class="cover-names"><span class="split-name" data-txt="Cindy">Cindy</span> <span class="amp">&amp;</span> <span class="split-name" data-txt="Adit">Adit</span></div>
     <div class="cover-to">Kepada Yth. Bapak / Ibu / Saudara / i</div>
     <div class="cover-guest" id="guestName">Tamu Undangan</div>
-    <div class="cover-maaf">* menawi wonten lepat anggen nyerat asma lan gelar *</div>
+    <div class="cover-maaf">* mohon maaf bila ada kesalahan penulisan nama &amp; gelar *</div>
     <div class="cover-open">
       <span class="ring"></span>
       <button class="btn btn-gold" onclick="unlock()"><small>buka undangan</small><span style="font-size:14px;letter-spacing:.34em;">Sumangga</span>
@@ -283,26 +345,28 @@ footer .credit{margin-top:24px;font-size:9.5px;letter-spacing:.34em;text-transfo
 
 <div class="viewport">
 
+  <div class="tumpal"></div>
+
   <!-- ===== HERO ===== -->
   <section class="hero" id="home">
-    <img src="assets/lamp_m.png" class="orn-flower hf-2" alt="">
-    <img src="assets/roses_m.png" class="orn-flower hf-1" alt="">
-    <img src="assets/bird_right.png" class="bird bird-r" style="top:150px;width:52px;" alt="">
-    <img src="assets/bird_left.png" class="bird bird-l" style="top:260px;width:44px;" alt="">
-    <span class="aksara" data-reveal="up">꧁ ꦩꦔꦪꦸꦧꦒꦾ ꧂</span>
-    <span class="eyebrow" data-reveal="up">The Wedding Of</span>
-    <h1 class="names" data-reveal="zoom"><span class="shimmer" data-txt="Pria">Pria</span> <span class="amp">&amp;</span> <span class="shimmer" data-txt="Wanita">Wanita</span></h1>
+    <div class="surya"></div>
+    <svg class="sulur-l orn"><use href="#sulur"/></svg>
+    <svg class="sulur-r orn"><use href="#sulur"/></svg>
+    <span class="eyebrow" data-reveal="up">Mangayubagya</span>
+    <h1 class="names" data-reveal="zoom"><span class="shimmer" data-txt="Cindy">Cindy</span> <span class="amp">&amp;</span> <span class="shimmer" data-txt="Adit">Adit</span></h1>
     <div class="hero-dateline" data-reveal="up">28 . 11 . 2026</div>
+
+    <div class="orn-center" data-reveal="zoom"><svg class="orn kembang"><use href="#kembang"/></svg></div>
 
     <div class="bigdate" data-reveal="zoom">
       <div class="num">28</div>
       <div class="mon">November 2026</div>
-      <div class="wd">Sabtu Pahing</div>
+      <div class="wd">Setu Pahing</div>
     </div>
 
     <div class="card" data-reveal="up" style="margin-top:26px;">
       <p class="quote">"Lan ing antaraning pratandha-pratandhaning kakuwasan-Né, Panjenengané nitahaké <b>jodho-jodhomu</b> saka jinismu dhéwé, supaya sira wareg lan tentrem, sarta andadèkaké ing antaramu <b>sihe</b> lan <b>welasé</b>."</p>
-      <div class="divider"><i></i><svg viewBox="0 0 24 24" stroke-width="1.4"><path d="M12 3v18M5 7l7-4 7 4M5 17l7 4 7-4"/></svg><i></i></div>
+      <div class="divider"><i></i><svg class="orn kembang" style="width:18px;height:18px;"><use href="#kembang"/></svg><i></i></div>
       <span class="eyebrow" style="font-size:10px;">Q.S. Ar-Rum · 21</span>
     </div>
 
@@ -317,39 +381,44 @@ footer .credit{margin-top:24px;font-size:9.5px;letter-spacing:.34em;text-transfo
   <!-- ===== MARQUEE ===== -->
   <div class="marquee" data-reveal="blur">
     <div class="track">
-      <span>Mangayubagya</span><span>Pria <b>&amp;</b> Wanita</span><span>28 November 2026</span><span>Sabtu Pahing</span><span>Nyuwun Pandonga</span><span>Pria <b>&amp;</b> Wanita</span><span>28 November 2026</span>
+      <span>Mangayubagya</span><span>Cindy <b>&amp;</b> Adit</span><span>28 November 2026</span><span>Setu Pahing</span><span>Nyuwun Pandonga</span><span>Cindy <b>&amp;</b> Adit</span>
     </div>
   </div>
 
   <!-- ===== COUPLE ===== -->
   <section class="couple-band" id="couple">
-    <img src="assets/xiangyun_m.png" alt="" style="position:absolute;top:10px;left:-14px;width:120px;opacity:.4;pointer-events:none;">
+    <div class="lereng"></div>
+    <svg class="gunungan-bg orn" style="pointer-events:none"><use href="#gunungan"/></svg>
     <span class="eyebrow" data-reveal="up">Temanten</span>
     <h2 class="title shimmer" data-reveal="zoom">Kekalih ingkang Binagya</h2>
     <p class="lede" data-reveal="up">Kalih manah ingkang dipun ruketaken ing ikatan suci.</p>
 
     <div class="couple-stack">
       <div class="person" data-reveal="left">
-        <div class="arch"><img src="assets/man.jpg" alt=""><span class="tag">Foto Demo</span></div>
-        <div class="mono">P</div>
+        <div class="arch"><img src="assets/adit.jpg" alt=""><span class="tag">Foto Demo</span></div>
+        <div class="mono">A</div>
         <div class="who">
           <div class="p-role">Temanten Kakung</div>
-          <div class="p-name">Pria</div>
-          <div class="p-full">Nama Jangkep Pengantin Pria</div>
+          <div class="p-name">Adit</div>
+          <div class="p-full">Nama Jangkep Pengantin Kakung</div>
           <div class="p-parents">Putra saking Bapak Fulan<br>&amp; Ibu Fulanah</div>
         </div>
       </div>
       <div class="amp-big" data-reveal="zoom">&amp;</div>
       <div class="person" data-reveal="right">
-        <div class="arch"><img src="assets/woman.jpg" alt=""><span class="tag">Foto Demo</span></div>
-        <div class="mono">W</div>
+        <div class="arch"><img src="assets/cindy.jpg" alt=""><span class="tag">Foto Demo</span></div>
+        <div class="mono">C</div>
         <div class="who">
           <div class="p-role">Temanten Putri</div>
-          <div class="p-name">Wanita</div>
-          <div class="p-full">Nama Jangkep Pengantin Wanita</div>
+          <div class="p-name">Cindy</div>
+          <div class="p-full">Nama Jangkep Pengantin Putri</div>
           <div class="p-parents">Putri saking Bapak Fulan<br>&amp; Ibu Fulanah</div>
         </div>
       </div>
+    </div>
+
+    <div class="sawat" data-reveal="zoom">
+      <svg><use href="#sawat"/></svg>
     </div>
   </section>
 
@@ -359,7 +428,7 @@ footer .credit{margin-top:24px;font-size:9.5px;letter-spacing:.34em;text-transfo
       <span class="eyebrow" data-reveal="up">Akad &amp; Resepsi</span>
       <h2 class="title shimmer" data-reveal="zoom">Wanci &amp; Papan</h2>
       <p class="lede" data-reveal="up">Mugi kepareng rawuh maringi donga pangestu.</p>
-      <img src="assets/ornamen1_m.jpg" class="orn" data-reveal="zoom" alt="">
+      <div class="orn-center" data-reveal="zoom"><svg class="orn gunungan" style="width:44px;"><use href="#gunungan"/></svg></div>
 
       <div class="event-col">
         <div class="card event" data-reveal="left">
@@ -393,12 +462,12 @@ footer .credit{margin-top:24px;font-size:9.5px;letter-spacing:.34em;text-transfo
       <p class="lede" data-reveal="up" style="margin-bottom:6px;">Geser kangge mirsani momen (foto demo).</p>
     </div>
     <div class="gallery" data-reveal="blur">
-      <div class="slide"><img src="assets/m01.jpg" alt=""><div class="cap">Momen 01</div></div>
-      <div class="slide"><img src="assets/m02.jpg" alt=""><div class="cap">Momen 02</div></div>
-      <div class="slide"><img src="assets/m03.jpg" alt=""><div class="cap">Momen 03</div></div>
-      <div class="slide"><img src="assets/m04.jpg" alt=""><div class="cap">Momen 04</div></div>
-      <div class="slide"><img src="assets/m05.jpg" alt=""><div class="cap">Momen 05</div></div>
-      <div class="slide"><img src="assets/m06.jpg" alt=""><div class="cap">Momen 06</div></div>
+      <div class="slide"><img src="assets/j1.jpg" alt=""><div class="cap">Momen 01</div></div>
+      <div class="slide"><img src="assets/j2.jpg" alt=""><div class="cap">Momen 02</div></div>
+      <div class="slide"><img src="assets/j3.jpg" alt=""><div class="cap">Momen 03</div></div>
+      <div class="slide"><img src="assets/j4.jpg" alt=""><div class="cap">Momen 04</div></div>
+      <div class="slide"><img src="assets/j5.jpg" alt=""><div class="cap">Momen 05</div></div>
+      <div class="slide"><img src="assets/j6.jpg" alt=""><div class="cap">Momen 06</div></div>
     </div>
   </section>
 
@@ -423,16 +492,16 @@ footer .credit{margin-top:24px;font-size:9.5px;letter-spacing:.34em;text-transfo
       <span class="eyebrow" data-reveal="up">Seserahan Kasih</span>
       <h2 class="title shimmer" data-reveal="zoom">Wedding Gift</h2>
       <p class="lede" data-reveal="up">Donga pangestu panjenengan sampun dados kanugrahan tanpa upami. Menawi kepareng, saged lumantar:</p>
-      <img src="assets/ornamen2_m.jpg" class="orn" data-reveal="zoom" alt="">
+      <div class="orn-center" data-reveal="zoom"><svg class="orn kembang"><use href="#kembang"/></svg></div>
       <div class="gift-grid">
         <div class="card gift" data-reveal="left">
           <div class="logo">BCA</div>
-          <div class="meta"><div class="bank">Bank Central Asia</div><div class="no" id="noBca">1234567890</div><div class="own">a.n. Asma Pengantin Pria</div></div>
+          <div class="meta"><div class="bank">Bank Central Asia</div><div class="no" id="noBca">1234567890</div><div class="own">a.n. Adit</div></div>
           <div class="copy" onclick="copy('noBca')">Salin</div>
         </div>
         <div class="card gift" data-reveal="right">
           <div class="logo">DA</div>
-          <div class="meta"><div class="bank">DANA</div><div class="no" id="noDana">081234567890</div><div class="own">a.n. Asma Pengantin Wanita</div></div>
+          <div class="meta"><div class="bank">DANA</div><div class="no" id="noDana">081234567890</div><div class="own">a.n. Cindy</div></div>
           <div class="copy" onclick="copy('noDana')">Salin</div>
         </div>
       </div>
@@ -457,11 +526,13 @@ footer .credit{margin-top:24px;font-size:9.5px;letter-spacing:.34em;text-transfo
     </div>
   </section>
 
+  <div class="tumpal flip"></div>
+
   <footer data-reveal="up">
-    <span class="aksara">꧁ ꦩꦠꦸꦂ ꦤꦸꦮꦸꦤ꧀ ꧂</span>
-    <div class="names">Pria <span class="amp">&amp;</span> Wanita</div>
+    <div class="orn-center"><svg class="orn gunungan"><use href="#gunungan"/></svg></div>
+    <div class="names">Cindy <span class="amp">&amp;</span> Adit</div>
     <p class="thanks">Saking manah ingkang paling jero, kula-sakanca ngaturaken agunging panuwun dene panjenengan rawuh lan paring pangestu.</p>
-    <div class="credit">Maroon Adat Jawa · Demo Edition</div>
+    <div class="credit">Maroon Adat Jawa · Cindy &amp; Adit</div>
   </footer>
 </div>
 
@@ -528,17 +599,15 @@ setInterval(()=>{
 })();
 
 function jump(id){const e=document.getElementById(id);if(e)e.scrollIntoView({behavior:'smooth'});}
-function simpanTanggal(){open("https://calendar.google.com/calendar/render?action=TEMPLATE&text="+encodeURIComponent("The Wedding of Pria & Wanita")+"&dates=20261128T010000Z/20261128T090000Z&location="+encodeURIComponent("Gedung Sasana Handrawina"),'_blank');}
+function simpanTanggal(){open("https://calendar.google.com/calendar/render?action=TEMPLATE&text="+encodeURIComponent("The Wedding of Cindy & Adit")+"&dates=20261128T010000Z/20261128T090000Z&location="+encodeURIComponent("Gedung Sasana Handrawina"),'_blank');}
 function copy(id){const t=document.getElementById(id).innerText;navigator.clipboard.writeText(t).then(()=>toast("Nomor tersalin")).catch(()=>toast(t));}
 function toast(m){const t=document.getElementById('toast');t.innerText=m;t.classList.add('show');setTimeout(()=>t.classList.remove('show'),2400);}
-function konfirmasi(){open("https://wa.me/?text="+encodeURIComponent("Halo, konfirmasi transfer kado kangge The Wedding of Pria & Wanita."),'_blank');}
+function konfirmasi(){open("https://wa.me/?text="+encodeURIComponent("Halo, konfirmasi transfer kado kangge The Wedding of Cindy & Adit."),'_blank');}
 function kirim(){const n=document.getElementById('namaForm').value||'Tamu Undangan',p=document.getElementById('pesanForm').value;if(!p){toast('Tulisen pangestu rumiyin');return;}
   const w=document.createElement('div');w.className='wish';w.innerHTML='<div class="a">'+esc(n)+'</div><div class="b">'+esc(p)+'</div>';
   document.getElementById('wishes').prepend(w);document.getElementById('pesanForm').value='';
   open("https://wa.me/?text="+encodeURIComponent("Ndherek mangayubagya, kula *"+n+"* ngaturaken pangestu:\n\n\""+p+"\""),'_blank');}
 function esc(s){return s.replace(/</g,'&lt;').replace(/>/g,'&gt;');}
-
-const style=document.createElement('style');style.textContent='.rotating{animation:spin 70s linear infinite;}';document.head.appendChild(style);
 </script>
 </body>
 </html>
