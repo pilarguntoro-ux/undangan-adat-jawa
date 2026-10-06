@@ -183,14 +183,15 @@ body{font-family:'Jost',sans-serif;font-weight:300;background:var(--m950);color:
 .couple-band .sulur{width:80px;opacity:.2;}
 .couple-stack{display:flex;flex-direction:column;gap:32px;margin-top:38px;padding:0 var(--pad);position:relative;z-index:1;}
 .person{position:relative;text-align:center;}
-.person .arch{position:relative;width:min(76vw,290px);margin:0 auto;border-radius:48% 48% 16px 16px;overflow:hidden;
+.arch-wrap{position:relative;width:min(76vw,290px);margin:0 auto;}
+.person .arch{position:relative;width:100%;border-radius:48% 48% 16px 16px;overflow:hidden;
   border:2px solid var(--gold);box-shadow:0 0 0 6px rgba(201,162,39,.12),0 26px 50px rgba(0,0,0,.55);}
 .person .arch img{width:100%;height:100%;aspect-ratio:3/4;object-fit:cover;display:block;animation:kenburns 16s ease-in-out infinite alternate;}
 .person .arch .tag{position:absolute;top:12px;left:50%;transform:translateX(-50%);font-size:9px;letter-spacing:.28em;text-transform:uppercase;color:var(--gold-3);background:rgba(20,0,0,.55);padding:5px 14px;border-radius:20px;border:1px solid rgba(201,162,39,.4);}
-.person .mono{position:absolute;bottom:-24px;left:50%;transform:translateX(-50%);width:50px;height:50px;border-radius:50%;z-index:2;
+.arch-wrap .mono{position:absolute;bottom:-24px;left:50%;transform:translateX(-50%);width:50px;height:50px;border-radius:50%;z-index:2;
   background:linear-gradient(135deg,#fff7da,var(--gold));color:var(--m800);font-family:'Pinyon Script',cursive;font-size:32px;line-height:50px;
   box-shadow:0 10px 24px rgba(0,0,0,.5),0 0 0 5px var(--m800);}
-.person .who{margin-top:46px;}
+.person .who{margin-top:40px;}
 .person .p-role{font-family:'Marcellus',serif;font-size:10px;letter-spacing:.3em;text-transform:uppercase;color:var(--gold);}
 .person .p-name{font-family:'Pinyon Script',cursive;font-size:42px;color:var(--paper);line-height:1;margin:6px 0 2px;}
 .person .p-full{font-family:'Marcellus',serif;font-size:10px;letter-spacing:.28em;text-transform:uppercase;color:var(--gold-2);margin:6px 0;}
@@ -407,8 +408,10 @@ footer .credit{margin-top:24px;font-size:9.5px;letter-spacing:.34em;text-transfo
 
     <div class="couple-stack">
       <div class="person" data-reveal="left">
-        <div class="arch"><img src="assets/adit.jpg" alt=""><span class="tag">Foto Demo</span></div>
-        <div class="mono">A</div>
+        <div class="arch-wrap">
+          <div class="arch"><img src="assets/adit.jpg" alt=""><span class="tag">Foto Demo</span></div>
+          <div class="mono">A</div>
+        </div>
         <div class="who">
           <div class="p-role">Mempelai Pria</div>
           <div class="p-name">Adit</div>
@@ -418,8 +421,10 @@ footer .credit{margin-top:24px;font-size:9.5px;letter-spacing:.34em;text-transfo
       </div>
       <div class="amp-big" data-reveal="zoom">&amp;</div>
       <div class="person" data-reveal="right">
-        <div class="arch"><img src="assets/cindy.jpg" alt=""><span class="tag">Foto Demo</span></div>
-        <div class="mono">C</div>
+        <div class="arch-wrap">
+          <div class="arch"><img src="assets/cindy.jpg" alt=""><span class="tag">Foto Demo</span></div>
+          <div class="mono">C</div>
+        </div>
         <div class="who">
           <div class="p-role">Mempelai Wanita</div>
           <div class="p-name">Cindy</div>
